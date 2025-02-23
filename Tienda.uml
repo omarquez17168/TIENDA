@@ -1,0 +1,40 @@
+@startuml
+class Tienda {
+    - nombre: String
+    - direccion: String
+    - telefono: String
+    - productos: List<Producto>
+    + agregarProducto(Producto)
+    + listarProductos()
+}
+
+class Producto {
+    - codigo: int
+    - nombre: String
+    - tipo: TipoProducto
+    - fechaExp: LocalDate
+    - fabricante: String
+    - cantidad: int
+    - precio: double
+    + getCodigo(): int
+    + getNombre(): String
+    + getTipo(): TipoProducto
+    + getFechaExp(): LocalDate
+    + getFabricante(): String
+    + getCantidad(): int
+    + getPrecio(): double
+    + setCantidad(int)
+    + setPrecio(double)
+}
+
+enum TipoProducto {
+    LACTEO
+    CARNICO
+    FRUTA
+    ENLATADO
+}
+
+Tienda "1" -- "many" Producto
+Producto --|> TipoProducto
+
+@enduml
